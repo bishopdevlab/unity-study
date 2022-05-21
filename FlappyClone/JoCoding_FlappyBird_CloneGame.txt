@@ -1,0 +1,228 @@
+유튜브 강좌 개요
+https://youtu.be/EqoU1PodQQ4
+
+무료 쉬운 게임 개발 강의 - 3시간만에 개발, 출시, 수익화까지 완성
+
+
+조코딩 JoCoding
+구독자 41.9만명
+
+이번 영상은 유니티(Unity) 게임 엔진을 활용하여 수익형 플래피버드(Flappy Bird) 클론 게임을 만드는 2022 버전의 강의입니다.
+
+목차
+00:00 미리보기
+00:08 강의소개
+01:03 강의 목차
+01:40 게임 엔진 소개
+03:49 유니티(Unity) 설치 및 세팅
+10:38 이미지 에셋 다운로드 및 세팅
+13:48 유니티 화면 구성 소개 - Project, Scene, Hierarchy, Game, Inspector
+14:48 배경 이미지 오브젝트 추가
+16:41 게임 화면 비율 조정하기
+19:39 애니메이션 추가하기
+22:41 게임 실행 및 Order in Layer 설정
+24:14 땅 오브젝트 추가 및 애니메이션 생성
+28:53 중력 추가하기 Rigidbody2D
+30:12 물리 경계 추가하기 Collider2D
+32:21 지금까지 내용 중간 정리
+32:49 점프 기능 추가하기 - 스크립트 추가
+33:59 Visual Studio Community 2019 개발 환경 세팅
+36:03 Visual Studio Code 개발 환경 세팅
+40:39 유니티 스크립트 기본 구조 파악하기
+42:12 프레임(Frame)이란?
+43:20 Start()와 Update()
+45:50 점프 기능 구현하기
+52:57 구글링 검색 꿀팁
+54:50 게임 실행하기
+55:12 점프 강도 조절하기
+57:31 스마트폰에서 게임 실행하기
+01:01:33 지금까지 내용 정리
+01:02:04 파이프 장애물 만들기
+01:05:26 파이프 움직이는 스크립트 생성
+01:09:47 Update 함수의 FPS에 따른 문제점
+01:10:47 Time.deltaTime의 개념과 활용 방법
+01:12:02 파이프 이동 스크립트 완성
+01:13:29 파이프에 부딛치도록 만들기 Collider2D
+01:14:27 Prefab 이해하기
+01:15:35 파이프 Prefab 만들기
+01:16:19 Prefab 생성기 만들기
+01:20:09 Prefab 생성 속도 조절하기
+01:21:35 파이프 생성 위치 Random하게 만들기
+01:27:21 Prefab 수정사항 반영하기
+01:29:41 파이프 사라지도록 만드는 Destroy 함수
+01:31:06 점수 표시하는 UI 만들기
+01:33:19 Rect Transform의 개념과 활용
+01:37:39 Score 스크립트 만들기
+01:38:48 static의 개념
+01:40:21 UI 숫자 Update하는 기능 구현
+01:41:57 구글링 방법과 장점
+01:42:34 점수 올려주는 기능 구현
+01:43:38 Collider의 Collision, Trigger 차이
+01:45:20 Trigger 스크립트 구현
+01:47:00 GameOver Scene 만들기 - Panel, Image, Text, Button
+01:54:14 GameOver Scene으로 Scene 전환하기
+01:57:23 Button 클릭하면 다시 Play Scene으로 전환하기
+02:00:36 Score 표시 스크립트 만들기
+02:02:48 Score 초기화
+02:03:55 Best Score 구현하기
+02:06:52 너무 높이 날았을때 GameOver 전환
+02:08:18 효과음 추가하기
+02:08:33 상업적 무료 효과음 추천 사이트
+02:09:39 효과음 직접 만드는 방법
+02:11:16 음원 확장자 변경
+02:11:49 효과음 유니티에 적용하는 방법
+02:13:29 스마트폰 테스트
+02:13:59 폰트 사이즈 작은 오류 수정 - Reference Resolution, Best Fit
+02:15:54 플래피버드 완성 테스트
+02:16:09 정리 및 배운 것 활용 방법
+02:17:21 안드로이드 앱 빌드를 위한 필수 도구 설치
+02:18:43 JDK 설정 방법
+02:19:47 SDK 설정 방법
+02:21:02 NDK 설정 방법 
+02:21:47 Company Name, Product Name, Version 설정
+02:22:55 앱 아이콘 제작 및 설정
+02:24:29 화면 방향 설정
+02:25:23 Splash Image 설정
+02:27:00 Other Settings - Package Name, Version, Bundle Version Code 설정
+02:28:03 Other Settings - Target API Level 정책
+02:28:31 Other Settings - Scripting Backend 설정
+02:28:59 Publishing Settings - Keystore, Key 만들기
+02:31:03 Unity google play에서 받은 앱 오류나는 원인 수정
+02:32:29 AAB 파일 빌드
+02:32:58 빌드 오류 관리자 권한 실행으로 해결
+02:33:39 Google Play Console 가입하기
+02:34:47 앱 만들기
+02:35:31 앱 설정 - 앱 액세스 권한, 광고, 콘텐츠 등급
+02:36:45 앱 설정 - 타겟층, 타겟 고객이 잘못되었을 경우
+02:38:06 앱 설정 - 개인정보처리방침 만드는 방법
+02:38:48 앱 설정 - 회사 홈페이지 만들기
+02:42:26 앱 설정 - 개인정보처리방침 생성 및 업로드
+02:43:28 앱 설정 - 타겟층 및 콘텐츠 재설정
+02:44:16 앱 설정 - 뉴스앱, 코로나19 접촉자 추적 앱 및 검사 결과 공유 앱
+02:44:33 앱 설정 - 앱 카테고리 선택 및 연락처 세부정보 제공
+02:45:24 앱 설정 - 스토어 등록정보 설정
+02:46:51 Google Play에 앱 게시
+02:47:57 Google Play 심사 안내 및 출시 완료
+02:48:18 애드 네트워크의 개념과 애드몹(Admob)
+02:49:52 애드몹 가입하기
+02:50:17 앱 등록하기
+02:53:21 광고 단위 만들기
+02:55:35 유니티 애드몹 광고 넣는 방법
+02:58:08 Android Auto-resoultion 설정 및 오류 해결
+03:00:00 Admob App ID 설정
+03:01:08 Admob 배너 광고 넣기
+03:06:27 Admob 전면 광고 넣기
+03:12:16 전면 광고 오류 및 해결
+03:16:19 실제 광고 ID로 변경
+03:17:02 Admob 테스트 기기 등록
+03:17:59 광고 아이디 찾는 방법
+03:19:02 다시 빌드 (Bundle Version Code 변경 필수)
+03:20:10 스마트폰 빌드 테스트
+03:20:25 광고가 안 뜨는 경우
+03:21:01 내부 테스트 앱 업데이트
+03:23:05 Google Play 앱 프로덕션 업데이트
+03:23:42 플레이스토어 앱 다운로드 및 실행
+03:24:00 마케팅 강의 추천
+
+------------------------
+
+1. 유니티 설치
+- 무료 Personal 라이선스
+- Unity Hub 환경설정: Unity 프로젝트 위치는 영문 경로를 사용
+- LTS 버전 설치
+- 모듈 추가 > 플랫폼 > Android Build Support 체크, Android SDK & NDK Tools 체크, OpenJDk 체크
+
+2. 프로젝트 생성
+- 에디터 버전, 템플릿 (2D Core) 선택
+- 영문 프로젝트명
+
+3. 이미지 에셋 다운로드 및 세팅
+* 이미지 에셋 다운로드
+https://animalface.site/flappy
+
+- 이미지를 프로젝트 내 Assets 폴더에 저장
+- 하나의 이미지 안에 여러가지 게임 요소들이 한번에 포함된 경우가 많음
+- 게임 요소 분리: Inspector > Sprite Mode : Single -> Multiple > Sprite Editor
+                       Sprite Editor > Slice> Slice 버튼 > Apply, Assets 내 파일 확인
+
+- 잘린 이미지가 흐린 경우 아래 설정 후 Apply
+  Filter Mode: Point(no filter)
+  Compression: None
+
+4. 게임 화면 비율 조정하기
+- 모바일용 화면 비율 추가: Game > Free Aspect > + > 9:16 Aspect Ratio 추가 > Apply
+
+5. 애니메이션 추가하기
+- Animation 창 실행: Window > Animation > Animation
+- Bird 선택 > Animation > Create > 파일 생성
+- Animation 창에 이미지 3개 선택 후 드래그 앤 드롭 후 자연스럽게 조정
+- Inspector > Order in Layer 조정
+- Game > Play 버튼으로 확인
+
+6. 땅 오브젝트 추가 및 애니메이션 생성
+- 땅 오브젝트 추가
+- 오브젝트 크기 변경없이 가로 길이 늘리기: Inspector > Draw Mode : Simple -> Tiled
+- 왼쪽으로 이동하기: Animation > 녹화 버튼 > 땅 왼쪽으로 조금 이동 > 3초로 선택 > 땅 위치 이동
+  이동 자연스럽게 하기: 키프레임 전체 선택 > Context Menu > Both Tangents > Linear
+
+7. 새 중력 추가하기 (Rigidbody2D)
+- 새 선택 > Inspector > Add Component > Physics 2D > Rigidbody 2D
+
+8. 물리 경계 추가하기 (Collider2D)
+- 새/땅에 물체의 경계를 만들어주기
+- 새 선택 > Inspector > Add Component > Physics 2D > Capsule Collider 2D, 새 주변의 초록색 경계가 표시됨 > Direction : Horizontal
+- 땅 선택 > Inspector > Add Component > Physics 2D > Box Collider 2D, 땅 주변의 초록색 경계가 표시됨 > Auto Tilting 체크 
+- 새가 떨어져 땅의 경계에 닿으면 그 위치를 그대로 유지
+
+9. 점프 기능 추가하기 (스크립트 작성)
+- 새 선택 > Inspector > Add Component > New script > "BirdJump" > Creat and Add
+- 스크립트 작성: Inspector > Bird Jump (Script) > Script "BirdJump" 더블클릭하여 VS 실행
+- public 접근제한자를 사용하면 Unity editor에 표시되어 값을 설정할 수 있음
+public class BirdJump : MonoBehaviour
+{
+    Rigidbody2D myRigidbody2D;
+    public float JumpPower;
+
+    void Start()
+    {
+        myRigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            myRigidbody2D.velocity = Vector2.up * JumpPower;    // (0,3)
+        }
+    }
+}
+
+10. Android 스마트폰에서 게임 실행하기
+- USB 디버깅: 개발자모드 활성화, 개발자 옵션 > USB 디버깅 활성화, USB 케이블 연결 (USB 파일 전송)
+- SampleScene을 Assets / Scenes 폴더에 드래그 엔 드랍하여 scene 파일을 추가
+- File > Build Settings > Android 선택 > Switch Platform > USB 연결 > Build And Run > APK 파일 위치 지정
+- 안드로이드 USB 연결 드라이버
+https://developer.samsung.com/mobile/android-usb-driver.html
+
+11. 파이프 장애물 만들기
+
+
+
+
+01:02:04 파이프 장애물 만들기
+01:05:26 파이프 움직이는 스크립트 생성
+01:09:47 Update 함수의 FPS에 따른 문제점
+01:10:47 Time.deltaTime의 개념과 활용 방법
+01:12:02 파이프 이동 스크립트 완성
+01:13:29 파이프에 부딛치도록 만들기 Collider2D
+01:14:27 Prefab 이해하기
+01:15:35 파이프 Prefab 만들기
+01:16:19 Prefab 생성기 만들기
+01:20:09 Prefab 생성 속도 조절하기
+01:21:35 파이프 생성 위치 Random하게 만들기
+01:27:21 Prefab 수정사항 반영하기
+01:29:41 파이프 사라지도록 만드는 Destroy 함수
+01:31:06 점수 표시하는 UI 만들기
+01:33:19 Rect Transform의 개념과 활용
+
+
