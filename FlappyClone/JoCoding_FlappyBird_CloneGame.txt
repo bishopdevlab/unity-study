@@ -201,28 +201,142 @@ public class BirdJump : MonoBehaviour
 - USB 디버깅: 개발자모드 활성화, 개발자 옵션 > USB 디버깅 활성화, USB 케이블 연결 (USB 파일 전송)
 - SampleScene을 Assets / Scenes 폴더에 드래그 엔 드랍하여 scene 파일을 추가
 - File > Build Settings > Android 선택 > Switch Platform > USB 연결 > Build And Run > APK 파일 위치 지정
-- 안드로이드 USB 연결 드라이버
+- 스마트폰에서 설치된 앱 실행
+- 참고. 안드로이드 USB 연결 드라이버
 https://developer.samsung.com/mobile/android-usb-driver.html
 
 11. 파이프 장애물 만들기
+- 파이프 이미지 img_2를 drag&drop으로 SampleScene에 추가
+- 파이프 이미지 복사하여 하나 더 만듬(위쪽 파이프). Hierachy에서 img_2 copy & paste
+- 위쪽 파이프 이미지 상/하 반전 시킴. Inspector > Rotation > Z : 180
+- 파이프 이미지 두개 묶기: SampleScene > Create empty > "Pipe" 이름 변경 > 이미지 두개 선택해서 pipe 하단으로 이동
+
+12. 파이프 움직이는 스크립트 생성
+- 파이프를 왼쪽으로 이동 : Pipe 선택 > Inspector > Add Component > New Script > "Move"입력 > Move더블클릭하여 코드 작성
+public class Move : MonoBehaviour
+{
+    public float speed;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position += Vector3.left * speed * Time.deltaTime; // (-1,0,0), speed -> IDE property 노출. Time.deltaTime -> FPS 보정
+    }
+}
+
+13. 파이프에 부딛치도록 만들기 Collider2D
+- 파이프1, 2 각각 Box Collider 2D 추가 : Inspector > Add Component > Physics 2D > Box Collider 2D 추가. 새가 파이프에 부딛치게 됨
+
+14. 파이프 반복(복사)하기 - Prefab 사용
+- Prefab을 하나 만든 후 Generator로 반복해서 생성할 수 있음
+- Pipe를 Prefab으로 만들기: Pipe 선택 후 Assets 안으로 drag&drop -> Pipe.prefab 파일이 생성됨.
+  즉 game object를 끌어다가 assets 에 넣으면 자동으로 prefab으로 만들어짐. 아이콘 색깔이 파란색으로 변경됨
+
+15. Prefab generator 만들기
+- Hierachy > Create Empty > "PipeGenerator"
+- MakePipe 스크립트 생성: Inspector > Add Component > New Script > "MakePipe" > Create and Add
+- MakePipe 더블클릭하여 스크립트 작성
+public class MakePipe : MonoBehaviour
+{
+    public GameObject pipe;
+    public float timeDiff;
+    float timer = 0;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Prefab 생성 속도 조절
+        timer += Time.deltaTime;
+        if (timer > timeDiff)
+        {
+            GameObject newpipe = Instantiate(pipe);  // 생성
+            // 간격 랜덤하게 조절
+            newpipe.transform.position = new Vector3(6, Random.Range(-6f, 1.7f), 0);
+
+            timer = 0;
+        }
+    }
+}
+- Assets > Pipe를 끌어다가 Inspector > Make Pipe > Pipe 속성에 놓으면 pipe prefab이 연결됨
+- Prefab 수정사항 반영하기: 복제된 Pipe 객체에 대해서 설정한 것이므로 원본 Prefab도 반영해줘야 함. Inspector > Prefab > Overrides > Apply All. Prefab이 변경되는는 항상 적용해줘야 함
+
+16. 파이프 사라지도록 만드는 Destroy 함수
+void Update()
+    {
+        // Prefab 생성 속도 조절
+        timer += Time.deltaTime;
+        if (timer > timeDiff)
+        {
+            GameObject newpipe = Instantiate(pipe);  // 생성
+            // 간격 랜덤하게 조절
+            newpipe.transform.position = new Vector3(6, Random.Range(-6f, 1.7f), 0);
+            timer = 0;
+            Destroy(newpipe, 10.0f); // 메모리 관리 - 생성된 후 10초 삭제됨
+        }
+    }
+
+17. 점수 표시하는 UI 만들기
+- Hierarchy > UI > Canvas 추가 후 이름 변경: "ScoreCanvas"
+- 생성된 Canvas는 Render Mode를 확인해 보면 Screen Space - Overay로 되어 있어 전체 화면을 full로 채우게 되어 있음
+- ScoreCanvas > UI > Text 추가
+- Text 위치를 특정 위치로 고정(Rect Transform 활용): Inspector > Rect Transform > Anchors > Min/Max 설정, Left/Top 설정 (Left: 0, Top: 0, Min X: 0, Min Y: 0.8, Max X: 1, Max Y: 1)
+  Rect Transform 활용: Anchor를 이용하여 해상도와 상관없이 위치를 고정할 수 있음
+- Score 스크립트 작성
+using UnityEngine.UI;
+
+public class Score : MonoBehaviour
+{
+    public static int score = 0;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        GetComponent<Text>().text = score.ToString();
+    }
+}
+
+18. 파이프 통과 시 점수 올려주기
+- Hierachy > Pipe > Create Empty > "ScoreUp" > Box Collider 2D 추가 > 파이프 사이로 크기 조정
+- Inspector > Box Collider 2D > Is Trigger 체크 선택
+  Collider - Collision(벽), Trigger(관통) 차이
+                OnCollision, OnTrigger 함수 사용
+
+- Inspector > New Component > New Script > "ScoreUp"
+- Trigger 스크립트 작성
+public class ScoreUp : MonoBehaviour
+{
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Score.score++;
+    }
+}
 
 
 
 
-01:02:04 파이프 장애물 만들기
-01:05:26 파이프 움직이는 스크립트 생성
-01:09:47 Update 함수의 FPS에 따른 문제점
-01:10:47 Time.deltaTime의 개념과 활용 방법
-01:12:02 파이프 이동 스크립트 완성
-01:13:29 파이프에 부딛치도록 만들기 Collider2D
-01:14:27 Prefab 이해하기
-01:15:35 파이프 Prefab 만들기
-01:16:19 Prefab 생성기 만들기
-01:20:09 Prefab 생성 속도 조절하기
-01:21:35 파이프 생성 위치 Random하게 만들기
-01:27:21 Prefab 수정사항 반영하기
-01:29:41 파이프 사라지도록 만드는 Destroy 함수
-01:31:06 점수 표시하는 UI 만들기
-01:33:19 Rect Transform의 개념과 활용
-
-
+01:47:00 GameOver Scene 만들기 - Panel, Image, Text, Button
+01:54:14 GameOver Scene으로 Scene 전환하기
+01:57:23 Button 클릭하면 다시 Play Scene으로 전환하기
+02:00:36 Score 표시 스크립트 만들기
+02:02:48 Score 초기화
+02:03:55 Best Score 구현하기
+02:06:52 너무 높이 날았을때 GameOver 전환
+02:08:18 효과음 추가하기
