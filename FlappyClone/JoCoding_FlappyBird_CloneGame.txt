@@ -329,14 +329,53 @@ public class ScoreUp : MonoBehaviour
     }
 }
 
+19. 게임 종료 Scene 추가 (파이프에 다으면 게임 종료 만들기)
+- SampleScene 이름 변경: Project > Assests > Scenes > "SampleScene" -> "PlayScene" rename > reload
+- GameOver 신규 Scene 만들기: File > New Scene > Basic 2D > Create
+- Hierarchy > Save Scene As > Scene 폴더에 "GameOverScene" 이름으로 저장
 
+20. GameOver scene 꾸미기
+- Canvas 추가: Hierarchy > UI > Canvas 추가
+- Panel 추가: Canvas 선택 > UI > Panel 추가
+- Panel 배경이미지 추가: Panel 선택 > Project > Assets > img_0 선택 > Inspector > Source Image에 drag&drop
+- Panel에 Game Over 이미지 추가: Panel 선택 > UI > Image > Image 선택 > Inspector > Source Image에 Game Over 이미지 drag&drop > Preserve Aspect (비율 유지)
+- Image 위치 고정: Image 선택 > Inspector > Anchors > Min X: 0.1, Max X: 0.9, Min Y: 0.8, Max Y: 1, Left/Top: 0
+- Text 추가: Panel 선택 > UI > Text > "Score" 이름 변경 후 위치/폰트 꾸미기
 
+21. Play 다시 시작하기 - Button 클릭하면 다시 Play Scene으로 전환하기
+- Panel 선택 > UI > Button 추가
+- Button 선택 > Source Image에 img_7 이미지 drag&drop > 비율 유지를 위해 Preserve Aspect 체크 > Button 하위 Text 삭제 (필요없음)
+- Button 선택 > 위치 고정(Left/Top/Right/Bottom : 0, Min/Max 조정)
 
-01:47:00 GameOver Scene 만들기 - Panel, Image, Text, Button
-01:54:14 GameOver Scene으로 Scene 전환하기
-01:57:23 Button 클릭하면 다시 Play Scene으로 전환하기
-02:00:36 Score 표시 스크립트 만들기
+22. Play scene에서 GameOver scene으로 전환
+- Project > Assets > Scene > PlayScene 선택 > Bird 선택 > BirdJump 스크립트 편집
+- 새/파이프 Collider들끼리 부딛혔을때의 스크립트 구현 > OnCollisionEnter2D (충돌이 발생했을때의 핸들러) 구현
+using UnityEngine.SceneManagement;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 씬 로드
+        SceneManager.LoadScene("GameOverScene");
+    }
+- Scenes In Build에 GameOverScene 추가: File > Build Settings... > Assets > Scenes > GameOverScene을 Scenes In Build 안으로 drag&drop
+- 실행 후 파이프에 부딛히면 GameOver 씬으로 변경됨
+
+23. Button 클릭하면 다시 Play Scene으로 전환하기
+- GameOverScene 선택 > Hierarchy > Create Empty > "Replay" > Add Component > 스크립트 작성
+using UnityEngine.SceneManagement;
+
+public class Replay : MonoBehaviour
+{
+    public void ReplayGame()
+    {
+        SceneManager.LoadScene("PlayScene");
+    }
+}
+
+24. Score 표시 스크립트 만들기
+
 02:02:48 Score 초기화
 02:03:55 Best Score 구현하기
 02:06:52 너무 높이 날았을때 GameOver 전환
 02:08:18 효과음 추가하기
+

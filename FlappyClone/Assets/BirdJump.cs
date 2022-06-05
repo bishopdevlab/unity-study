@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BirdJump : MonoBehaviour
 {
@@ -18,5 +19,11 @@ public class BirdJump : MonoBehaviour
         {
             myRigidbody2D.velocity = Vector2.up * JumpPower;    // (0,3)
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // ¾À ·Îµå
+        SceneManager.LoadScene("GameOverScene");
     }
 }
