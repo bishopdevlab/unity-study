@@ -4,12 +4,12 @@ https://youtu.be/EqoU1PodQQ4
 
 무료 쉬운 게임 개발 강의 - 3시간만에 개발, 출시, 수익화까지 완성
 
-조코딩 JoCoding
-구독자 41.9만명
+조코딩 JoCoding (구독자 41.9만명)
 
 이번 영상은 유니티(Unity) 게임 엔진을 활용하여 수익형 플래피버드(Flappy Bird) 클론 게임을 만드는 2022 버전의 강의입니다.
 
 목차
+<pre>
 00:00 미리보기
 00:08 강의소개
 01:03 강의 목차
@@ -123,6 +123,7 @@ https://youtu.be/EqoU1PodQQ4
 03:23:05 Google Play 앱 프로덕션 업데이트
 03:23:42 플레이스토어 앱 다운로드 및 실행
 03:24:00 마케팅 강의 추천
+</pre>
 
 # 강좌 요약
 
@@ -180,6 +181,8 @@ https://animalface.site/flappy
 - 새 선택 > Inspector > Add Component > New script > "BirdJump" > Creat and Add
 - 스크립트 작성: Inspector > Bird Jump (Script) > Script "BirdJump" 더블클릭하여 VS 실행
 - public 접근제한자를 사용하면 Unity editor에 표시되어 값을 설정할 수 있음
+
+```
 public class BirdJump : MonoBehaviour
 {
     Rigidbody2D myRigidbody2D;
@@ -198,6 +201,7 @@ public class BirdJump : MonoBehaviour
         }
     }
 }
+```
 
 10. Android 스마트폰에서 게임 실행하기
 - USB 디버깅: 개발자모드 활성화, 개발자 옵션 > USB 디버깅 활성화, USB 케이블 연결 (USB 파일 전송)
@@ -215,6 +219,8 @@ https://developer.samsung.com/mobile/android-usb-driver.html
 
 12. 파이프 움직이는 스크립트 생성
 - 파이프를 왼쪽으로 이동 : Pipe 선택 > Inspector > Add Component > New Script > "Move"입력 > Move더블클릭하여 코드 작성
+
+```
 public class Move : MonoBehaviour
 {
     public float speed;
@@ -231,6 +237,7 @@ public class Move : MonoBehaviour
         transform.position += Vector3.left * speed * Time.deltaTime; // (-1,0,0), speed -> IDE property 노출. Time.deltaTime -> FPS 보정
     }
 }
+```
 
 13. 파이프에 부딛치도록 만들기 Collider2D
 - 파이프1, 2 각각 Box Collider 2D 추가 : Inspector > Add Component > Physics 2D > Box Collider 2D 추가. 새가 파이프에 부딛치게 됨
@@ -244,6 +251,8 @@ public class Move : MonoBehaviour
 - Hierachy > Create Empty > "PipeGenerator"
 - MakePipe 스크립트 생성: Inspector > Add Component > New Script > "MakePipe" > Create and Add
 - MakePipe 더블클릭하여 스크립트 작성
+
+```
 public class MakePipe : MonoBehaviour
 {
     public GameObject pipe;
@@ -271,10 +280,13 @@ public class MakePipe : MonoBehaviour
         }
     }
 }
+```
 - Assets > Pipe를 끌어다가 Inspector > Make Pipe > Pipe 속성에 놓으면 pipe prefab이 연결됨
 - Prefab 수정사항 반영하기: 복제된 Pipe 객체에 대해서 설정한 것이므로 원본 Prefab도 반영해줘야 함. Inspector > Prefab > Overrides > Apply All. Prefab이 변경되는는 항상 적용해줘야 함
 
 16. 파이프 사라지도록 만드는 Destroy 함수
+
+```
 void Update()
     {
         // Prefab 생성 속도 조절
@@ -288,6 +300,7 @@ void Update()
             Destroy(newpipe, 10.0f); // 메모리 관리 - 생성된 후 10초 삭제됨
         }
     }
+```
 
 17. 점수 표시하는 UI 만들기
 - Hierarchy > UI > Canvas 추가 후 이름 변경: "ScoreCanvas"
@@ -296,6 +309,8 @@ void Update()
 - Text 위치를 특정 위치로 고정(Rect Transform 활용): Inspector > Rect Transform > Anchors > Min/Max 설정, Left/Top 설정 (Left: 0, Top: 0, Min X: 0, Min Y: 0.8, Max X: 1, Max Y: 1)
   Rect Transform 활용: Anchor를 이용하여 해상도와 상관없이 위치를 고정할 수 있음
 - Score 스크립트 작성
+
+```
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour
@@ -314,6 +329,7 @@ public class Score : MonoBehaviour
         GetComponent<Text>().text = score.ToString();
     }
 }
+```
 
 18. 파이프 통과 시 점수 올려주기
 - Hierachy > Pipe > Create Empty > "ScoreUp" > Box Collider 2D 추가 > 파이프 사이로 크기 조정
@@ -323,6 +339,8 @@ public class Score : MonoBehaviour
 
 - Inspector > New Component > New Script > "ScoreUp"
 - Trigger 스크립트 작성
+
+```
 public class ScoreUp : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
@@ -330,6 +348,7 @@ public class ScoreUp : MonoBehaviour
         Score.score++;
     }
 }
+```
 
 19. 게임 종료 Scene 추가 (파이프에 다으면 게임 종료 만들기)
 - SampleScene 이름 변경: Project > Assests > Scenes > "SampleScene" -> "PlayScene" rename > reload
@@ -352,6 +371,8 @@ public class ScoreUp : MonoBehaviour
 22. Play scene에서 GameOver scene으로 전환
 - Project > Assets > Scene > PlayScene 선택 > Bird 선택 > BirdJump 스크립트 편집
 - 새/파이프 Collider들끼리 부딛혔을때의 스크립트 구현 > OnCollisionEnter2D (충돌이 발생했을때의 핸들러) 구현
+
+```
 using UnityEngine.SceneManagement;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -359,11 +380,15 @@ using UnityEngine.SceneManagement;
         // 씬 로드
         SceneManager.LoadScene("GameOverScene");
     }
+```
+    
 - Scenes In Build에 GameOverScene 추가: File > Build Settings... > Assets > Scenes > GameOverScene을 Scenes In Build 안으로 drag&drop
 - 실행 후 파이프에 부딛히면 GameOver 씬으로 변경됨
 
 23. Button 클릭하면 다시 Play Scene으로 전환하기
 - GameOverScene 선택 > Hierarchy > Create Empty > "Replay" > Add Component > 스크립트 작성
+
+```
 using UnityEngine.SceneManagement;
 
 public class Replay : MonoBehaviour
@@ -373,6 +398,7 @@ public class Replay : MonoBehaviour
         SceneManager.LoadScene("PlayScene");
     }
 }
+```
 
 24. Score 표시 스크립트 만들기
 - Score 클래스에서 score 변수 초기화
@@ -391,7 +417,10 @@ wav 파일을 Asset에 drag&drop > Bird 객체에 Audio Source 컴포넌트 추�
 Play On Awake 체크 해제 (시작과 동시에 재생됨을 방지)
 - Asset에 추가된 음원을 AudioClip 값으로 drag&drop
 - 음원 재생
+
+```
 GetComponent<AudioSource>().Play();
+```
 
 28. 폰트 사이즈 작은 오류 수정 - Reference Resolution, Best Fit
 - Canvas Scaler : Constant Pixel Size -> Scale With Screen Size로 변경.
