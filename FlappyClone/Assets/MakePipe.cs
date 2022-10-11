@@ -23,7 +23,7 @@ public class MakePipe : MonoBehaviour
         {
             GameObject newpipe = Instantiate(pipe);  // 생성
             // 간격 랜덤하게 조절
-            newpipe.transform.position = new Vector3(6, Random.Range(-6f, 1.7f), 0);
+            newpipe.transform.position = new Vector3(6, Random.Range(-4f, 3.7f), 0);
             timer = 0;
             Destroy(newpipe, 10.0f); // 메모리 관리 - 생성된 후 10초 삭제됨
         }

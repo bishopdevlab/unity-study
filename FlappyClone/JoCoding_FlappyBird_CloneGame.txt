@@ -1,8 +1,8 @@
-유튜브 강좌 개요
+# 유튜브 강좌 개요
+
 https://youtu.be/EqoU1PodQQ4
 
 무료 쉬운 게임 개발 강의 - 3시간만에 개발, 출시, 수익화까지 완성
-
 
 조코딩 JoCoding
 구독자 41.9만명
@@ -124,7 +124,9 @@ https://youtu.be/EqoU1PodQQ4
 03:23:42 플레이스토어 앱 다운로드 및 실행
 03:24:00 마케팅 강의 추천
 
-------------------------
+# 강좌 요약
+
+강좌를 따라하면서 요약하여 정리한 내용입니다.
 
 1. 유니티 설치
 - 무료 Personal 라이선스
@@ -373,9 +375,50 @@ public class Replay : MonoBehaviour
 }
 
 24. Score 표시 스크립트 만들기
+- Score 클래스에서 score 변수 초기화
 
-02:02:48 Score 초기화
-02:03:55 Best Score 구현하기
-02:06:52 너무 높이 날았을때 GameOver 전환
-02:08:18 효과음 추가하기
+25. Best Score 구현하기
+- BirdJump 클래스 OnCollisionEnter2D 메서드에서 best score 갱신 스크립트 작성
 
+26. 너무 높이 날았을때 GameOver 전환
+- 위 영역 밖에도 Collider2D 추가하여 영역을 벗어나는 경우에도 GameOver 화면으로 전환
+
+27. 효과음 추가하기
+- 효과음 준비하기 
+https://soundeffect-lab.info/ 사이트에 방문하여 효과음을 다운로드하여 사용하거나 직접 제작
+- 효과음 추가
+wav 파일을 Asset에 drag&drop > Bird 객체에 Audio Source 컴포넌트 추가
+Play On Awake 체크 해제 (시작과 동시에 재생됨을 방지)
+- Asset에 추가된 음원을 AudioClip 값으로 drag&drop
+- 음원 재생
+GetComponent<AudioSource>().Play();
+
+28. 폰트 사이즈 작은 오류 수정 - Reference Resolution, Best Fit
+- Canvas Scaler : Constant Pixel Size -> Scale With Screen Size로 변경.
+- Reference Resolution을 입력할 수 있게 되고, 스마트폰 해상도로 조정
+- Text > Best Fit 체크 > Min/Max size 설정 가능해짐
+
+29. 완성 테스트
+
+30. 앱 배포를 위한 Project Settings
+- Build App Bundle (Google Play) 체크
+- Player Settings
+Company Name, Product Name: 고유한 이름 사용 (중복 시 등록 안됨)
+Icon 설정
+Resolution and Presentation > Orientation 설정
+Splash Image > Splash Screen > Logs 추가
+Other Settings > 
+	Identification > Package Name 고유한 값 사용, Bundle Version Code 업데이트 시 숫자를 상향
+	Target API Level은 구글 권장 API 레벨로 사용 (예: API 수준 30)
+	Configuration > Scripting Backend : Mono -> IL2CPP
+	Configuration > Target Architectures : ARMv7, ARM64 (2019년 8월부터 의무 사항) 체크
+Publishing Settings > 
+	Keystore Manager > Create New > In Dedicated Location > keystore 파일 생성
+	비밀번호 설정 (앱 수정시 필요하므로 반드시 기억해야 함)
+	나머지 정보 설정
+
+31. Google Play Store 등록
+- netlify.com 활용 (정적 웹사이트 등록)
+
+32. 광고 등록
+- 구글 AdMob
