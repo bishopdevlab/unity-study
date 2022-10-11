@@ -9,4 +9,4 @@ Unity engine study
 
 ### 클론 코딩 과정 기록
 
-JoCoding_FlappyBird_CloneGame.txt 파일 참고
+JoCoding_FlappyBird_CloneGame.md 파일에  참고하세요.
