@@ -9,6 +9,5 @@ public class BestScore : MonoBehaviour
     void Start()
     {
         GetComponent<Text>().text = "Best Score: " + Score.bestScore;
-        
     }
 }

@@ -32,6 +32,7 @@ public class BirdJump : MonoBehaviour
         {
             Score.bestScore = Score.score;
         }
+
         SceneManager.LoadScene("GameOverScene");
     }
 }
